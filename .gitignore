@@ -8,8 +8,8 @@ idea
 
 dist
 db.sqlite3
-
-venv
+static/ckeditor/
+/venv/
 
 
 prod_settings.py

@@ -1,0 +1,261 @@
+  File "B:\promma\lib\pathlib.py", line 1221, in stat
+    return self._accessor.stat(self)
+OSError: [WinError 123] Синтаксическая ошибка в имени файла, имени папки или метке тома: '<frozen importlib._bootstrap>'
+
+
+если такая проблема, то вот решение
+
+
+
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>python manage.py migrate
+Traceback (most recent call last):
+  File "B:\promma\python\django\KinoPoisk\django_movie\manage.py", line 21, in <module>
+    main()
+  File "B:\promma\python\django\KinoPoisk\django_movie\manage.py", line 17, in main
+    execute_from_command_line(sys.argv)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\core\management\__init__.py", line 446, in execute_from_command_line
+    utility.execute()
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\core\management\__init__.py", line 420, in execute
+    django.setup()
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\apps\registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\apps\config.py", line 193, in create
+    import_module(entry)
+  File "B:\promma\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'ckeditor'
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>pip install django-ckeditor --upgrade
+Collecting django-ckeditor
+  Using cached django_ckeditor-6.5.1-py3-none-any.whl (2.4 MB)
+Requirement already satisfied, skipping upgrade: Django>=3.2 in b:\promma\python\django\kinopoisk\django_movie\venv\lib\site-packages (from django-ckeditor) (4.1.2)
+Collecting django-js-asset>=2.0
+  Using cached django_js_asset-2.0.0-py3-none-any.whl (4.9 kB)
+Requirement already satisfied, skipping upgrade: tzdata; sys_platform == "win32" in b:\promma\python\django\kinopoisk\django_movie\venv\lib\site-packages (from Django>=3.2->django-ckeditor) (2022.4)
+Requirement already satisfied, skipping upgrade: sqlparse>=0.2.2 in b:\promma\python\django\kinopoisk\django_movie\venv\lib\site-packages (from Django>=3.2->django-ckeditor) (0.4.3)
+Requirement already satisfied, skipping upgrade: asgiref<4,>=3.5.2 in b:\promma\python\django\kinopoisk\django_movie\venv\lib\site-packages (from Django>=3.2->django-ckeditor) (3.5.2)
+Installing collected packages: django-js-asset, django-ckeditor
+Successfully installed django-ckeditor-6.5.1 django-js-asset-2.0.0
+WARNING: You are using pip version 20.2.3; however, version 23.0.1 is available.
+You should consider upgrading via the 'b:\promma\python\django\kinopoisk\django_movie\venv\scripts\python.exe -m pip install --upgrade pip' command.
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>python manage.py migrate              
+SystemCheckError: System check identified some issues:
+
+ERRORS:
+movies.Actor.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+movies.Movie.poster: (fields.E210) Cannot use ImageField because Pillow is not installed.
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+movies.MovieShots.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+
+WARNINGS:
+movies.Actor: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Category: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Genre: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Movie: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.MovieShots: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Rating: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.RatingStar: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Reviews: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "B:\promma\lib\threading.py", line 954, in _bootstrap_inner
+    self.run()
+  File "B:\promma\lib\threading.py", line 892, in run
+    self._target(*self._args, **self._kwargs)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\utils\autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\core\management\commands\runserver.py", line 134, in inner_run
+    self.check(display_num_errors=True)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\core\management\base.py", line 546, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+movies.Actor.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+movies.Movie.poster: (fields.E210) Cannot use ImageField because Pillow is not installed.
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+movies.MovieShots.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
+
+WARNINGS:
+movies.Actor: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Category: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Genre: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Movie: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.MovieShots: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Rating: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.RatingStar: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Reviews: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+
+System check identified 11 issues (0 silenced).
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>python -m pip install Pillow
+Collecting Pillow
+  Downloading Pillow-9.4.0-cp39-cp39-win_amd64.whl (2.5 MB)
+     |████████████████████████████████| 2.5 MB 1.7 MB/s
+Installing collected packages: Pillow
+Successfully installed Pillow-9.4.0
+WARNING: You are using pip version 20.2.3; however, version 23.0.1 is available.
+You should consider upgrading via the 'B:\promma\python\django\KinoPoisk\django_movie\venv\Scripts\python.exe -m pip install --upgrade pip' command.
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>python manage.py runserver   
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified some issues:
+
+WARNINGS:
+movies.Actor: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Category: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Genre: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Movie: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.MovieShots: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Rating: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.RatingStar: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+movies.Reviews: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+        HINT: Configure the DEFAULT_AUTO_FIELD setting or the MoviesConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+
+System check identified 8 issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+March 20, 2023 - 21:55:45
+Django version 4.1.2, using settings 'django_movie.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: movies_category
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\template\defaulttags.py", line 194, in render
+    len_values = len(values)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\models\query.py", line 376, in __len__
+    self._fetch_all()
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\models\query.py", line 1866, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\models\query.py", line 87, in __iter__
+    results = compiler.execute_sql(
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "B:\promma\python\django\KinoPoisk\django_movie\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: movies_category
+[20/Mar/2023 21:55:48] "GET / HTTP/1.1" 500 241818
+Not Found: /favicon.ico
+[20/Mar/2023 21:55:48] "GET /favicon.ico HTTP/1.1" 404 3411
+
+(venv) B:\promma\python\django\KinoPoisk\django_movie>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
